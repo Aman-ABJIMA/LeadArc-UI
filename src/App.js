@@ -1,23 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useEffect, useState } from 'react';
+import 'primereact/resources/themes/nano/theme.css'
+import 'primeicons/primeicons.css'; // Icons
+import TopbarComponet from './components/TopbarComponet';
+import MainComponent from './components/MainComponent';
+import SidebarComponent from './components/SidebarComponent';
+import Routing from './config/Routing';
+import FooterComponent from './components/FooterComponent';
 
 function App() {
+  const handleResize = () => {
+    if ( window.innerWidth < 992 ) {
+      SidebarPinned(false);
+    } 
+  };
+  const [isSidebarPinned, SidebarPinned] = useState(false);
+  const handlePinChange = (pinned) => {
+    SidebarPinned(pinned);
+    
+    
+  }
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  useEffect(() => {
+    handleResize();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <TopbarComponet />
+      <SidebarComponent onPinChange={handlePinChange}/>
+      <div className={`main ${isSidebarPinned ? 'component-compress' : 'component-not-compress'}`}>
+      <Routing>    
+        <MainComponent />
+      </Routing>
+      <FooterComponent/>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,35 @@
+.main-content {
+  background-color: #fff;
+  padding: 10px;
+  flex: 1;
+}
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust columns */
+  grid-gap: 10px; /* Space between grid items */
+  max-width: 100%; /* Prevents the grid from exceeding the page width */
+  overflow-x: hidden; /* Hides horizontal overflow */
+  padding: 10px; /* Optional padding */
+  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+
+/* Mobile Styles (up to 599px) */
+@media only screen and (max-width: 599px) {
+  .sidebar {
+    width: 0px;
+    display: none;
+  }
+
+  .btn-bar {
+    display: inline;
+  }
+
+  .btn-bar:focus,
+  .btn-bar:active {
+    outline: none;
+    box-shadow: none;
+    border: none;
+  }
+
+}
