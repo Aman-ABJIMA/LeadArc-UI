@@ -63,7 +63,9 @@
   transform: scale(1.05);
 
 }
-
+#app-sidebar-2{
+background-color: #293241;
+}
 
 @media (max-width: 600px) {
   .input ,.refresh{

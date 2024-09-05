@@ -11,12 +11,16 @@ import FooterComponent from './components/FooterComponent';
 function App() {
   const handleResize = () => {
     if ( window.innerWidth < 992 ) {
-      SidebarPinned(false);
+      sidebarPinned(false);
     } 
   };
-  const [isSidebarPinned, SidebarPinned] = useState(false);
+  const [isSidebarPinned, sidebarPinned] = useState(false);
+  const [isSidebarVisible, sidebarVisible] = useState(false);
+  const handleSidebar = (e) => {
+    sidebarVisible(e)
+  }
   const handlePinChange = (pinned) => {
-    SidebarPinned(pinned);
+    sidebarPinned(pinned);
     
     
   }
@@ -33,8 +37,8 @@ function App() {
 
   return (
     <div>
-      <TopbarComponet />
-      <SidebarComponent onPinChange={handlePinChange}/>
+    <TopbarComponet sidebarVisible={handleSidebar}/>
+      <SidebarComponent onPinChange={handlePinChange} />
       <div className={`main ${isSidebarPinned ? 'component-compress' : 'component-not-compress'}`}>
       <Routing>    
         <MainComponent />
