@@ -1,6 +1,8 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import 'primereact/resources/themes/nano/theme.css'
+import 'primereact/resources/themes/nano/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css'; // Icons
 import TopbarComponet from './components/TopbarComponet';
 import MainComponent from './components/MainComponent';
